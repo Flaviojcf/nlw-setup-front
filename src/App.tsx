@@ -1,3 +1,4 @@
+import './services/dayjs'
 import "./styles/global.css";
 
 import { Header } from "./components/Header";
