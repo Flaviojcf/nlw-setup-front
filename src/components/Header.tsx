@@ -5,7 +5,7 @@ import logoImage from "/assets/logo.svg";
 
 export function Header() {
   return (
-    <div className="flex items-center justify-between w-full max-w-3xl mx-auto ">
+    <div className="flex items-center justify-between w-full max-w-3xl mx-auto px-6 mobile:gap-4">
       <img src={logoImage} />
       <Dialog.Root>
         <Dialog.Trigger

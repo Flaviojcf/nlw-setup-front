@@ -11,13 +11,13 @@ const amountOfDatesToFill = minimumSummaryDatesSize - summaryDates.length;
 
 export function SummaryTable() {
   return (
-    <div className="flex w-full">
-      <div className="grid grid-rows-7 grid-flow-row gap-3">
+    <div className="flex w-full  min-w-[310px] tablet:flex-col tablet:items-center tablet:justify-center tablet:pt-10 tablet:pb-20 tablet:p-2  ">
+      <div className="grid grid-rows-7 grid-flow-row gap-3 tablet:flex mobile:gap-1">
         {weekDays.map((day) => {
           return (
             <div
               key={useId()}
-              className="flex items-center justify-center text-zinc-400 font-bold text-xl h-10 w-10"
+              className="flex items-center justify-center text-zinc-400 font-bold text-xl h-10 w-10 "
             >
               {day}
             </div>
@@ -25,7 +25,7 @@ export function SummaryTable() {
         })}
       </div>
 
-      <div className="grid grid-rows-7 grid-flow-col gap-3">
+      <div className="grid grid-rows-7 grid-flow-col gap-3 tablet:grid-flow-row tablet:grid-cols-7 mobile:gap-1">
         {summaryDates.map((day) => {
           return (
             <HabitDay
