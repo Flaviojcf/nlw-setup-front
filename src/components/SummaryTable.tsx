@@ -25,10 +25,13 @@ export function SummaryTable() {
     api.get("/summary").then((response) => {
       setSummary(response.data);
     });
-  });
+  }, []);
 
   return (
-    <div className="flex w-full  min-w-[310px] tablet:flex-col tablet:items-center tablet:justify-center tablet:pt-10 tablet:pb-20 tablet:p-2  ">
+    <div
+      className="flex w-full  min-w-[310px] tablet:flex-col tablet:items-center 
+    tablet:justify-center tablet:pt-10 tablet:pb-20 tablet:p-2  "
+    >
       <div className="grid grid-rows-7 grid-flow-row gap-3 tablet:flex mobile:gap-1">
         {weekDays.map((day) => {
           return (
@@ -43,20 +46,21 @@ export function SummaryTable() {
       </div>
 
       <div className="grid grid-rows-7 grid-flow-col gap-3 tablet:grid-flow-row tablet:grid-cols-7 mobile:gap-1">
-        {summaryDates.map((date) => {
-          const dayInSummary = summary.find((day) => {
-            return dayjs(date).isSame(day.date, 'day');
-          });
+        {summary.length > 0 &&
+          summaryDates.map((date) => {
+            const dayInSummary = summary.find((day) => {
+              return dayjs(date).isSame(day.date, "day");
+            });
 
-          return (
-            <HabitDay
-              key={useId()}
-              date = {date}
-              amount={dayInSummary?.amount}
-              completed={dayInSummary?.completed}
-            />
-          );
-        })}
+            return (
+              <HabitDay
+                key={date.toString()}
+                date={date}
+                amount={dayInSummary?.amount}
+                defaultCompleted={dayInSummary?.completed}
+              />
+            );
+          })}
         {amountOfDatesToFill > 0 &&
           Array.from({ length: amountOfDatesToFill }).map((day) => {
             return (
